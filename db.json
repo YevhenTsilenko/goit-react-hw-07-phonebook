@@ -1,29 +1,3 @@
 {
-  "contacts": [
-    {
-      "name": "Yevhen Tsilenko",
-      "number": "12123123123124",
-      "id": 2
-    },
-    {
-      "name": "Евгений",
-      "number": "12123123123124",
-      "id": 3
-    },
-    {
-      "name": "Yevhen Tsilenko",
-      "number": "12123123123124",
-      "id": 4
-    },
-    {
-      "name": "adgdsfgds",
-      "number": "12123123123124",
-      "id": 5
-    },
-    {
-      "name": "Yevhen Tsilenko",
-      "number": "12123123123124",
-      "id": 6
-    }
-  ]
+  "contacts": []
 }

@@ -12,6 +12,7 @@ function Loader () {
                 width={100}
                 timeout={5000}
                 margin-left={100} 
+                margin-top={10}
             />
         </div>
         

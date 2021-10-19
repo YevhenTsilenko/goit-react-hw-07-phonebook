@@ -11,13 +11,7 @@ const items = createReducer(
   [],
   {
     [getContactsSuccess]: (_, { payload }) => payload,
-    [addContactSuccess]: (state, { payload }) => {
-      if (state.some(({ name }) => name === payload.name)) {
-        alert(`${payload.name} is already exists`);
-        return [...state];
-      }     
-      return [...state, payload]
-    },
+    [addContactSuccess]: (state, { payload }) => [...state, payload],
     [deleteContactSuccess]: (state, { payload }) =>
       state.filter(contact => contact.id !== payload),
   },

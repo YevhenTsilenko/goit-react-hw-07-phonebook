@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addContact } from '../../redux/operations';
-import { getIsLoading } from '../../redux/selectors';
+import { getIsLoading, getContacts } from '../../redux/selectors';
 import { Button } from '../Button/Button';
 import styles from './ContactForm.module.css';
 import { Loader } from '../Loader/Loader';
 
-function ContactForm({ onSubmit, isLoading }) {
+function ContactForm({ contacts, onSubmit, isLoading }) {
     const [name, setName] = useState('');
-    const [number, setNumber] = useState('')
+    const [number, setNumber] = useState('');
+    
+    const addNewContact = (name, number) => {
+        const names = contacts.map((contact) => contact.name.toLowerCase());
+        const currentName = name.toLowerCase()
+        console.log(currentName)
+        if(names.includes(currentName))  {
+           return alert(`${name} is already exists`);
+        }
+
+        onSubmit(name, number);
+    }
 
     const hendleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(name, number);
+        addNewContact(name, number);
         reset();
     };
     
@@ -61,7 +72,8 @@ function ContactForm({ onSubmit, isLoading }) {
 }
 
 const mapStateToProps = state => ({
-    isLoading: getIsLoading(state)
+    isLoading: getIsLoading(state),
+    contacts: getContacts(state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -69,6 +81,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 ContactForm.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
     onSubmit: PropTypes.func.isRequired,
     isLoading: PropTypes.bool,
 };

@@ -21,8 +21,8 @@ import {
     const contact = {
         name,
         number,
-    };
-  
+    };  
+
     dispatch(addContactRequest());
   
     axios.post('/contacts', contact)
